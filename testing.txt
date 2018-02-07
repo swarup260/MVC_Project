@@ -1,0 +1,71 @@
+<div class="marginTop">
+            <main>
+                    <section class="card">
+                        <i class="fas fa-user"></i>
+                        <p>
+                            No.of Employees
+                        </p>
+                    </section>
+                    <section class="card">
+                        <i class="fas fa-user" id="online"></i>
+                        <p>
+                            No.of Employees Present
+                        </p>
+                    </section>
+                    <section class="card">
+                        <i class="fab fa-whmcs"></i>
+                        <p>
+                            No.of Projects
+                        </p>
+                    </section>
+                </main>
+    </div>
+    
+
+
+
+    section.main-content{
+    /* Center */
+    max-width: 1200px;
+    margin: 0 auto;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width: 500px;
+    height: 400px;
+    border: 1px solid black;
+    border-radius: 5px;
+
+    
+}
+div.marginTop{
+    margin-top:100px;
+}
+
+main{
+    max-width: 100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3,300px);
+    grid-gap: 2em;
+    
+    section.card{
+        background: #fff;
+        margin: 10px;
+        border: 1px solid black;
+        height: 250px;
+        text-align: center;
+       i.fas,i.fab{
+            font-size: 150px !important;
+            margin: 20px 25px;
+            color:$extra;
+        }
+        i#online{
+            color: $nav-color;
+        }
+        p{
+            font-size: 20px;
+        }
+    }
+}
