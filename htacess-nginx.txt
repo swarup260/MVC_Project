@@ -1,0 +1,126 @@
+Htaccess Rule --> Nginx 
+1.)
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+-----------*-----*----------> Nginx
+
+# nginx configuration
+
+location  ~ /\ {
+  if (!-e $request_filename){
+    rewrite ^(.*)$ /index.php break;
+  }
+}
+
+2.)
+
+RewriteEngine On
+RewriteRule ^/([^/]+)/?index.php?url=$1 [QSA,L]
+
+-----------*-----*----------> Nginx
+
+# nginx configuration
+
+location ~ /\ {
+	  rewrite ^/([^/]+)/?index.php?url=$1 / break;
+	}
+
+3.)
+
+/*
+If you have an URL that you should be calling with “GET /orders?id=13” 
+and you want it to respond as if “GET /orders/13” was called,
+ then you may use the following:
+*/
+RewriteEngine On
+RewriteCond %{REQUEST_URI} ^/orders [NC]
+RewriteCond %{QUERY_STRING} ^id=([0-9]+)$ [NC]
+RewriteRule ^(.*)$ %{REQUEST_URI}/%1\? [R,L]
+
+-----------*-----*----------> Nginx
+
+# nginx configuration
+
+
+location ~ /\ {
+  if (!-e $request_filename){
+    rewrite ^(.*)$ /index.php break;
+  }
+}
+
+1. Redirect everything the www subdomain
+
+RewriteEngine On
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+
+-----------*-----*----------> Nginx
+
+# nginx configuration
+
+location / {
+  if ($http_host !~ "^www\."){
+    rewrite ^(.*)$ http://www.$http_host/$1 redirect;
+  }
+}
+
+2.Redirect everything to HTTPS
+
+RewriteEngine On
+RewriteCond %{HTTPS} !on [NC]
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+-----------*-----*----------> Nginx
+
+# nginx configuration
+
+location / {
+  rewrite ^(.*)$ https://$http_host/$1 redirect;
+}
+
+
+3.PHP file to handle all non-static requests
+--n PHP it allows you to read the actual requested path in the
+ $_SERVER[‘REQUEST_URI’] global variable. 
+The rewrite looks like this:
+
+ RewriteEngine On
+ RewriteCond %{REQUEST_FILENAME} !-d
+ RewriteCond %{REQUEST_FILENAME} !-f
+ RewriteRule ^(.*)$ index.php [QSA,L]
+
+
+-----------*-----*----------> Nginx
+
+# nginx configuration
+
+location / {
+  if (!-e $request_filename){
+    rewrite ^(.*)$ /index.php break;
+  }
+}
+
+
+
+4.)
+# Rewrite ---
+ http://techsevindashboard.com => http://techsevindashboard.com/$controller/$action/$request
+
+RewriteRule ^$ /$controller/$action/$request?&%{QUERY_STRING}
+
+
+-----------*-----*----------> Nginx
+
+# nginx configuration
+
+location / {
+  rewrite ^/$ /$controller/$action/$request?&$query_string;
+}
+ --OR---
+
+location ~/\ {
+  rewrite ^/$ /$controller/$action/$request?&$query_string;
+}
