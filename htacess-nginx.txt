@@ -1,3 +1,12 @@
+******************************************************|
+https://winginx.com/en/htaccess			      |
+HTACESS TO NGINX CONVERTOR		              |
+******************************************************|
+ 						      
+						      
+nginx--save--to
+-> /etc/nginx/site-available/$virtual_name
+
 Htaccess Rule --> Nginx 
 1.)
 RewriteEngine On
