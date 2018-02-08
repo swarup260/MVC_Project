@@ -1,0 +1,73 @@
+1 .CREATE DATABASE techsevin;
+//Employee main_details
+
+2. CREATE TABLE employee(id int(11) NOT NULL AUTO_INCREMENT, 
+emp_name varchar(225), emp_email varchar(225), emp_phone int(100),emp_password     varchar(225),
+emp_status ENUM('Active','Deactive') DEFAULT 'Active',emp_type  ENUM('User','Admin') DEFAULT 'User',emp_pos varchar(225),emp_joined date ,created_by varchar(20),modified_by varchar(20),created_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,modified_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY (id));
+
+3. ALTER TABLE employee AUTO_INCREMENT = 1000;
+
+
+//Employee extra Details
+3.CREATE TABLE employee_detail(id int(11) NOT NULL AUTO_INCREMENT,
+emp_gender ENUM('M','F') DEFAULT 'M',
+emp_address varchar(225), emp_contact int(100), emp_adhaarno int(100),
+ emp_pancard  int(100), emp_photo varchar(100),employee_id int(11),created_by varchar(20),modified_by varchar(20),created_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,modified_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY(id));
+
+
+5.alter table employee_detail add foreign key(employee_id)
+ references employee(id);
+
+
+//Emp_attendance
+6.CREATE TABLE employee_attendance( id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY ,att_status ENUM('P','A') DEFAULT 'A',
+att_day datetime,
+ att_check_in datetime, 
+att_check_out datetime,
+employee_id int(11),created_by varchar(20),modified_by varchar(20),created_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,modified_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+
+7.alter table employee_attendance add foreign key(employee_id) references employee(id);
+
+
+
+
+8.create table project(id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+     p_name varchar(255),
+     p_status Enum('1','0') DEFAULT '1',
+     p_start_date datetime,
+     p_end_date datetime,created_by varchar(20),modified_by varchar(20),created_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,modified_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+
+ 9.create table requirement_project(id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY ,require_name varchar(225), require_status ENUM('C','W','A','H') DEFAULT 'A',
+created_by varchar(20),modified_by varchar(20),created_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,modified_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ project_id int(11));
+
+10.alter table requirement_project add foreign key(project_id) references project(id);
+
+
+11. create table project_activity(id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+requirement_project_id int(11) NOT NULL,employee_id int(11) NOT NULL);
+
+12.alter table project_activity add foreign key(requirement_project_id) references requirement_project(id);
+
+13.alter table project_activity add foreign key(employee_id) references employee(id);
+
+
+
+14.  create table requirement_doc(id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, doc_type varchar(225),doc_name varchar(225),project_id int(11),created_by varchar(20),modified_by varchar(20),created_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,modified_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+
+
+15. alter table requirement_doc add foreign key(project_id) references project(id);
+
+
+
+
+16. TO BACKUP THE DATA::
+
+mysqldump -u $username -p $databases_name > $path/$backup_name.sql
+
+
+
+
+
+     
