@@ -1,7 +1,8 @@
-******************************************************|
-https://winginx.com/en/htaccess			      |
-HTACESS TO NGINX CONVERTOR		              |
-******************************************************|
+****************************************************************************|
+https://winginx.com/en/htaccess			                            |
+HTACESS TO NGINX CONVERTOR	                                            |
+https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/|
+*****************************************************************************|
  						      
 						      
 nginx--save--to
@@ -133,3 +134,18 @@ location / {
 location ~/\ {
   rewrite ^/$ /$controller/$action/$request?&$query_string;
 }
+
+
+Front Controller Pattern Web Apps
+--> Nginx :
+1.try_files $uri $uri/ /index.php?q=$uri&$args;
+
+2. try_files $uri $uri/ /index.php;
+
+
+
+
+
+
+
+
