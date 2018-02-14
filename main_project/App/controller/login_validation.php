@@ -3,7 +3,7 @@
 
 class Login_validation  extends Controller{
     
-    public function data($error)
+    public function data()
     {
         if(isset($_POST['submit'])){
             $data = $_POST['data'];

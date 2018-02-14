@@ -42,8 +42,8 @@ class App
     */
     private function parseUrl()
     {
-        if (isset($_GET['q'])) {
-            return $url = explode('/', filter_var(trim($_GET['q'], '/'), FILTER_SANITIZE_URL));
+        if (isset($_GET['url'])) {
+            return $url = explode('/', filter_var(trim($_GET['url'], '/'), FILTER_SANITIZE_URL));
         }
     }
 
