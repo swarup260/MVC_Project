@@ -1,0 +1,57 @@
+<?php
+
+include '../public/layouts/header.php';
+
+?>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <a href="www.techsevin.com"><b>TECH</b>SEVIN</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg"><b>Login</b></p>
+
+    <form action="/login_validation/data" method="post">
+      <div class="form-group has-feedback">
+        <input type="email" name = "data[emp_email]" class="form-control" placeholder="Email">
+        <span class="text-uppercase text-danger"><?php echo $error['value']; ?></span>
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" name = "data[emp_password]" class="form-control" placeholder="Password">
+        <span class="text-uppercase text-danger"><?php echo $error['value']; ?></span>
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="row">
+        <!-- <div class="col-xs-8">
+          <div class="checkbox icheck">
+            <label>
+              <input type="checkbox"> Remember Me
+            </label>
+          </div>
+        </div> -->
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <button type="submit" name="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+        </div>
+        <!-- /.col -->
+      </div>
+    </form>
+
+
+    <!-- <a href="#">I forgot my password</a><br> -->
+  </div>
+  <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery 3 -->
+<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- iCheck -->
+<script src="../bower_components/admin-lte/plugins/iCheck/icheck.min.js"></script>
+</script>
+</body>
+</html>

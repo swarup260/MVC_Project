@@ -1,0 +1,23 @@
+{
+  "name": "mvc_project",
+  "authors": [
+    "swarup <swarup260@gmail.com>"
+  ],
+  "description": "MVC based management project",
+  "main": "index.php",
+  "keywords": [
+    "MVC"
+  ],
+  "license": "MIT",
+  "homepage": "index.php",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "admin-lte": "^2.4.3"
+  }
+}
