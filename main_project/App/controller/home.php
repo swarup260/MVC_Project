@@ -4,10 +4,12 @@
 
 class Home extends Controller {
 
-    public function index($name = '')
+    public function index($col)
     {
         $obj = $this->model('Db');
-        $this->render('home/index',$array = array('name' => $name));
+        // $data = $obj->SelectData($col);
+        $this->render('home/index');
+        // $this->render('showdata/show',$data);
     }
     public function test()
     {

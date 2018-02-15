@@ -6,12 +6,13 @@ class Controller {
     protected function model($model)
     {
         require_once "../App/models/" . $model.".php";
-        return new $model;
+        return $model::getInstance();
+        // return new $model;
     }
 
     protected function render($views,$data =[])
     {
-        include "../App/views/" .$views .".phtml";
+        include_once "../App/views/" .$views .".phtml";
     }
     
 
