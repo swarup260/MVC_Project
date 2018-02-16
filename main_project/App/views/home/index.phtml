@@ -14,13 +14,13 @@ include '../public/layouts/header.php';
 
     <form action="<?php echo rtrim($_SERVER['PHP_SELF'],"/index.php") ."/login_validation/data";?>" method="post">
       <div class="form-group has-feedback">
-        <input type="email" name = "data[emp_email]" class="form-control" placeholder="Email">
-        <span class="text-uppercase text-danger"><?php { $websiteErr;} ?></span>
+        <input type="email" name = "data[u_email]" class="form-control" placeholder="Email">
+        <span class="text-uppercase text-danger"><?php echo (empty($data['email_error'])) ?  null : $data['email_error']; ?></span>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" name = "data[emp_password]" class="form-control" placeholder="Password">
-        <span class="text-uppercase text-danger"><?php  ?></span>
+        <input type="password" name = "data[u_password]" class="form-control" placeholder="Password">
+        <span class="text-uppercase text-danger"><?php echo (empty($data['password_error'])) ?  null : $data['password_error']; ?></span>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">

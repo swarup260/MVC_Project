@@ -6,7 +6,7 @@ class Controller {
     protected function model($model)
     {
         require_once "../App/models/" . $model.".php";
-        return new $model;
+        return $model::getInstance();
     }
 
     protected function render($views,$data =[])
