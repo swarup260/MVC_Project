@@ -1,2 +1,4 @@
-# MVC_Project
-Management System 
+# Simple Model-View-Controller Application
+### MVC skeleton model app
+
+
